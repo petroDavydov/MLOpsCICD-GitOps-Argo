@@ -1,5 +1,4 @@
-# .gitignore
-
+# MLOpsCICD-GitOps-Argo/.gitignore
 
 # OS-specific files
 .DS_Store

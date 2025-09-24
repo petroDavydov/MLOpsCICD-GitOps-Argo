@@ -6,18 +6,20 @@
 
 ```
 MLOpsCICD-GitOps-Argo/
-├── application/                  # ArgoCD Application ресурс
-│   └── application.yaml
-├── values/                       # Helm overrides для чарта nginx
-│   └── nginx-values.yaml
+├── application/
+│   ├── nginx-application.yaml
+│   └── mlflow-application.yaml
+├── values/
+│   ├── nginx-values.yaml
+│   └── mlflow-values.yaml
 ├── namespaces/
-│   ├── application/              # Namespace для nginx
-│   │   ├── nginx.yaml            # (не використовується напряму)
-│   │   └── ns.yaml
-│   └── infra-tools/              # Namespace для ArgoCD
-│       └── ns.yaml
+│   ├── application/ns.yaml
+│   ├── infra-tools/ns.yaml
+│   └── mlflow/ns.yaml
 ├── .gitignore
 └── README.md
+
+
 ```
 
 
@@ -64,6 +66,10 @@ kubectl get applications -n infra-tools
 kubectl get pods -n application
 ```
 
+```
+kubectl get pods -n mlflow
+```
+
 ## Як відкрити доступ до nginx
 
 ```
@@ -74,3 +80,25 @@ kubectl port-forward svc/nginx-app -n application 8081:80
 
 
 [MLOpsCICD-GitOps-Argo](https://github.com/petroDavydov/MLOpsCICD-GitOps-Argo)
+
+
+
+## Деплой mlflow
+
+MLflow деплоїться через Helm-чарт з community-charts.
+
+```
+kubectl get applications -n infra-tools
+kubectl get pods -n mlflow
+```
+
+## Доступ до mlflow
+
+```
+kubectl port-forward svc/mlflow-service -n mlflow 5000:5000
+
+```
+
+Ви получите UI для трекінгу експериментів
+
+* Після цього відкрийте у браузері: http://localhost:5000
