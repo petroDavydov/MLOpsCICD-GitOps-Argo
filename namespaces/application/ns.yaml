@@ -1,0 +1,7 @@
+# namespace/application/ns.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: application
+  labels:
+    name: application

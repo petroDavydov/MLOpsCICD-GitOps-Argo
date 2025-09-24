@@ -1,0 +1,7 @@
+# namespace/infra-tools/ns.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: infra-tools
+  labels:
+    name: infra-tools
