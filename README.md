@@ -1,6 +1,7 @@
 # MLOpsCICD-GitOps-Argo
 <!-- gitops repositiry:namespaces/application/nginx.yaml, ns.yaml; namespaces/infra-tools/ns.yaml; readme.md -->
 
+!!! Цей репозиторій пов'язаний з [MLOpsCICD](https://github.com/petroDavydov/MLOpsCICD/tree/lesson-7) гілкою lesson-7.
 
 ## Структура проекту
 
@@ -25,7 +26,7 @@ MLOpsCICD-GitOps-Argo/
 
 ## Запуск terraform
 
-Ці команди ви повинні виконати у папці eks-vps-clucter, по адресі https://github.com/petroDavydov/MLOpsCICD
+Ці команди ви повинні виконати у папці eks-vps-clucter, по адресу https://github.com/petroDavydov/MLOpsCICD
 
 ```
 terraform init
@@ -78,9 +79,7 @@ kubectl port-forward svc/nginx-app -n application 8081:80
 
 * Після цього відкрий у браузері: http://localhost:8081
 
-
-[MLOpsCICD-GitOps-Argo](https://github.com/petroDavydov/MLOpsCICD-GitOps-Argo)
-
+--------------------------------------------------------------------------------------------------------------------------------
 
 
 ## Деплой mlflow
