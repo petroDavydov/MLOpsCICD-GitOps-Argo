@@ -1,7 +1,7 @@
 # MLOpsCICD-GitOps-Argo
 <!-- gitops repositiry:namespaces/application/nginx.yaml, ns.yaml; namespaces/infra-tools/ns.yaml; readme.md -->
 
-!!! Цей репозиторій пов'язаний з [MLOpsCICD](https://github.com/petroDavydov/MLOpsCICD/tree/lesson-7) гілкою lesson-7.
+!!! Цей репозиторій пов'язаний з [MLOpsCICD](https://github.com/petroDavydov/MLOpsCICD/tree/lesson-8-9) гілкою lesson-8-9.
 
 ## Структура проекту
 
@@ -9,17 +9,26 @@
 MLOpsCICD-GitOps-Argo/
 ├── application/
 │   ├── nginx-application.yaml
-│   └── mlflow-application.yaml
+│   ├── mlflow-application.yaml
+│   ├── minio-application.yaml  - додано
+│   ├── postgres-application.yaml  - додано
+│   └── pushgateway-application.yaml   - додано
 ├── values/
 │   ├── nginx-values.yaml
-│   └── mlflow-values.yaml
+│   ├── mlflow-values.yaml
+│   └── pushgateway-values.yaml  - додано
 ├── namespaces/
 │   ├── application/ns.yaml
 │   ├── infra-tools/ns.yaml
-│   └── mlflow/ns.yaml
+│   ├── mlflow/ns.yaml
+│   └── monitoring/ns.yaml  - додано
+├── experiments/
+│   ├── train_and_push.py  - додано
+│   └── requirements.txt  - додано
+├── best_model/
+│   └── model.pkl  - додається після запуску train_and_push.py
 ├── .gitignore
-└── README.md
-
+└── README.md  - додано нові зміни в кінці файлу
 
 ```
 
@@ -101,3 +110,42 @@ kubectl port-forward svc/mlflow-service -n mlflow 5000:5000
 Ви получите UI для трекінгу експериментів
 
 * Після цього відкрийте у браузері: http://localhost:5000
+
+
+# Робота з MLFlow та PushGateway
+
+
+```
+cd experiments
+python(або python3) train_and_push.py
+```
+
+## Перевірка наявності MLFlow та PushGateway у кластері
+
+```
+kubectl get svc -n application | grep mlflow
+kubectl get svc -n monitoring | grep pushgateway
+```
+
+## Порт форвардінг
+
+```
+kubectl port-forward svc/mlflow-service -n mlflow 5000:5000 &
+kubectl port-forward svc/minio -n application 9000:9000 &
+```
+
+## Перевірка метрик
+
+```
+kubectl port-forward svc/pushgateway -n monitoring 9091:9091
+```
+
+## Перевірка метрик в UI
+
+* Після цього відкрийте у браузері: http://localhost:9091/metrics
+
+Перейти в Grafana → Explore → Prometheus
+ Ввести:
+  - `mlflow_accuracy`
+  - `mlflow_loss`
+- Побудувати графік або таблицю

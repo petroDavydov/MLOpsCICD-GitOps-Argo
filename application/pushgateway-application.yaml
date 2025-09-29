@@ -15,10 +15,8 @@ spec:
     chart: prometheus-pushgateway
     targetRevision: 2.0.4
     helm:
-      values: |
-        service:
-          type: ClusterIP
-          port: 9091
+      valueFiles:
+        - values/pushgateway-values.yaml
   syncPolicy:
     automated:
       prune: true

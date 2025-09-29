@@ -94,4 +94,4 @@ for params in param_grid:
 # ==============================
 os.makedirs("best_model", exist_ok=True)
 joblib.dump(best_model, "best_model/model.pkl")
-print(f"\n🏆 Найкраща модель збережена (run_id={best_run_id}, accuracy={best_accuracy:.4f})")
+print(f"\n Найкраща модель збережена (run_id={best_run_id}, accuracy={best_accuracy:.4f})")
