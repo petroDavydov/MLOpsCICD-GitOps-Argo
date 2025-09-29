@@ -149,3 +149,7 @@ kubectl port-forward svc/pushgateway -n monitoring 9091:9091
   - `mlflow_accuracy`
   - `mlflow_loss`
 - Побудувати графік або таблицю
+
+
+
+* Можливо при встановлені певних бібліотек вам знадобиться створите віртуальне оточення для роботи команди pip
