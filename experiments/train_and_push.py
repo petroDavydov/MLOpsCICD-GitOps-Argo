@@ -82,7 +82,7 @@ for params in param_grid:
         loss_gauge.labels(run_id=run_id).set(loss)
         push_to_gateway(pushgateway_url, job="mlflow_model", registry=registry)
 
-        print(f"✅ Run {run_id}: acc={acc:.4f}, loss={loss:.4f}")
+        print(f" Run {run_id}: acc={acc:.4f}, loss={loss:.4f}")
 
         if acc > best_accuracy:
             best_accuracy = acc
@@ -92,6 +92,6 @@ for params in param_grid:
 # ==============================
 # Збереження найкращої моделі
 # ==============================
-os.makedirs("best_model", exist_ok=True)
-joblib.dump(best_model, "best_model/model.pkl")
+os.makedirs("../best_model", exist_ok=True)
+joblib.dump(best_model, "../best_model/model.pkl")
 print(f"\n Найкраща модель збережена (run_id={best_run_id}, accuracy={best_accuracy:.4f})")
