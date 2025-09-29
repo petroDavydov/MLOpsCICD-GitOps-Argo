@@ -1,0 +1,8 @@
+# experiments/requirements.txt
+
+mlflow
+scikit-learn
+prometheus_client
+python-dotenv
+boto3
+joblib
