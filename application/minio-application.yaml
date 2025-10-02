@@ -15,7 +15,7 @@ spec:
     chart: minio
     targetRevision: 12.1.7
     helm:
-      values: |
+      values:
         defaultBuckets: mlflow-artifacts
         auth:
           rootUser: minio

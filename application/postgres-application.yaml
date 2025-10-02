@@ -15,7 +15,7 @@ spec:
     chart: postgresql
     targetRevision: 12.5.7
     helm:
-      values: |
+      values:
         auth:
           username: mlflow
           password: mlflow123
